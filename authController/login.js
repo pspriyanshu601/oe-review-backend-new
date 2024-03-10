@@ -10,6 +10,7 @@ const generateToken = async () => {
     { expiresIn: "15d" }
   );
 };
+
 const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -34,7 +35,13 @@ const loginController = async (req, res) => {
       });
     }
 
-    generateToken();
+    // generateToken();
+
+    const token = jwt.sign(
+      { id: hashedPassword.rows[0].id },
+      process.env.JWT_SECRET,
+      { expiresIn: "15d" }
+    );
 
     res.cookie("username", hashedPassword.rows[0].username, {
       maxAge: 900000,

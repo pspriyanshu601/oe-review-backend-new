@@ -1,9 +1,9 @@
 import pool from "../db.js";
 
-const addSubjectController = (req, res) => {
+const addSubjectController = async (req, res) => {
   const obj = req.body;
   try {
-    pool.query(
+    await pool.query(
       "INSERT INTO subjects (subject_name,course_code,dept_name) VALUES ($1,$2,$3)",
       [obj.subject_name, obj.course_code, obj.dept_name]
     );

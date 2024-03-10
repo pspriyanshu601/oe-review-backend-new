@@ -50,3 +50,6 @@
 
 -- INSERT INTO subjects (subject_name,course_code,department_name)
 -- VALUES ('Computer Networks','ecd403','electronicsengineering');
+
+ALTER TABLE subjects 
+RENAME COLUMN department_name to dept_name;
